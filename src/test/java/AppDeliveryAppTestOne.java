@@ -38,8 +38,11 @@ public class AppDeliveryAppTestOne {
         $$(".menu-item__control").findBy(Condition.text("Воронеж")).click();
         $(".input__control").click();
         String Date = generateData(3, "dd.MM.yyyy");
-        generateData(3,"MM").equals(generateData(7,"MM"));
-        //$$("[data-day]").findBy(Condition.text("14")).click(); на этой строке застрял
+        $("[data-test-id='date'] input").click();
+        if (!generateData(3,"MM").equals(generateData(7,"MM"))){
+            $("[data-step='1']").click();
+        };
+        $$(".data-day").findBy(generateData(7,"dd")).click();
         $("[data-test-id='name'] input").setValue("Алексей Бабкин");
         $("[data-test-id='phone'] input").setValue("+79102436802");
         $("[data-test-id='agreement']").click();
